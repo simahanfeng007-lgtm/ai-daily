@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AI 日报 · 2026年9月7日</title>
+<style>
+  :root{
+    --paper:#f6f1e6;
+    --paper-deep:#efe8d8;
+    --ink:#1a140c;
+    --ink-2:#4a4232;
+    --ink-3:#7a7160;
+    --line:#d9d0bb;
+    --line-strong:#b8ac8f;
+    --seal:#b3261e;
+    --serif:"Songti SC","STSong","STZhongsong","SimSun","Noto Serif CJK SC",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.85;
+  }
+  /* 纸张噪点 */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;
+    opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .page{
+    max-width:480px;
+    margin:0 auto;
+    padding:26px 22px 56px;
+    position:relative;
+  }
+
+  /* ===== 报头 ===== */
+  .masthead{
+    border-top:3px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding:14px 0 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+  }
+  .nameplate{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:44px;
+    letter-spacing:.08em;
+    line-height:1;
+  }
+  .nameplate .ai{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    letter-spacing:0;
+    margin-right:.12em;
+  }
+  .seal{
+    flex:none;
+    width:52px;height:52px;
+    background:var(--seal);
+    color:#fdf9f0;
+    font-family:var(--serif);
+    font-size:26px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-3deg);
+    box-shadow:inset 0 0 0 2px var(--paper), inset 0 0 0 3.5px #fdf9f0;
+    border-radius:4px;
+  }
+  .dateline{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:9px 2px 0;
+    font-size:13px;
+    color:var(--ink-2);
+    letter-spacing:.06em;
+  }
+  .dateline .en{
+    font-family:Georgia,serif;
+    font-size:10.5px;
+    letter-spacing:.28em;
+    color:var(--ink-3);
+    text-transform:uppercase;
+  }
+  .rule-double{
+    margin-top:10px;
+    border-top:1px solid var(--ink);
+    height:3px;
+    border-bottom:3px solid var(--ink);
+  }
+
+  /* ===== 导语 ===== */
+  .lead{
+    padding:22px 2px 6px;
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.9;
+    color:var(--ink);
+  }
+  .lead strong{
+    color:var(--seal);
+    font-weight:700;
+  }
+
+  /* ===== 头条 ===== */
+  .section-label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:26px 0 14px;
+  }
+  .section-label .sq{
+    width:9px;height:9px;background:var(--seal);flex:none;
+  }
+  .section-label .t{
+    font-family:var(--serif);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.35em;
+  }
+  .section-label .line{
+    flex:1;height:1px;background:var(--line-strong);
+  }
+
+  .topstory .num{
+    font-family:Georgia,serif;
+    font-size:15px;
+    color:var(--seal);
+    letter-spacing:.1em;
+  }
+  .topstory h1{
+    font-family:var(--serif);
+    font-size:27px;
+    line-height:1.45;
+    font-weight:900;
+    margin:6px 0 12px;
+  }
+  .topstory p{
+    font-size:15.5px;
+    color:var(--ink);
+    text-align:justify;
+  }
+  .topstory p:first-of-type::first-letter{
+    font-family:var(--serif);
+    float:left;
+    font-size:46px;
+    line-height:1;
+    padding:4px 8px 0 0;
+    color:var(--seal);
+    font-weight:900;
+  }
+  .takeaway{
+    margin-top:14px;
+    padding:10px 0 10px 14px;
+    border-left:3px solid var(--seal);
+    background:linear-gradient(to right, rgba(179,38,30,.05), transparent 70%);
+  }
+  .takeaway .k{
+    font-size:12px;
+    color:var(--seal);
+    letter-spacing:.3em;
+    display:block;
+    margin-bottom:2px;
+  }
+  .takeaway .v{
+    font-family:var(--serif);
+    font-size:15.5px;
+    font-weight:700;
+    line-height:1.7;
+  }
+
+  /* ===== 要闻条目 ===== */
+  .item{
+    padding:20px 0 18px;
+    border-bottom:1px solid var(--line);
+  }
+  .item .head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+  }
+  .item .num{
+    font-family:Georgia,serif;
+    font-size:14px;
+    color:var(--seal);
+    flex:none;
+  }
+  .item .cat{
+    font-size:11px;
+    color:var(--ink-3);
+    letter-spacing:.22em;
+    flex:none;
+  }
+  .item h2{
+    font-family:var(--serif);
+    font-size:19.5px;
+    font-weight:900;
+    line-height:1.55;
+    margin:8px 0 8px;
+  }
+  .item p{
+    font-size:15px;
+    color:var(--ink-2);
+    text-align:justify;
+    line-height:1.85;
+  }
+
+  /* ===== 数字速览 ===== */
+  .digits{
+    margin-top:8px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line-strong);
+    border:1px solid var(--line-strong);
+  }
+  .digit{
+    background:var(--paper);
+    padding:16px 14px 14px;
+  }
+  .digit .n{
+    font-family:var(--serif);
+    font-size:27px;
+    font-weight:900;
+    line-height:1.15;
+    color:var(--ink);
+  }
+  .digit .n em{
+    font-style:normal;
+    font-size:15px;
+    color:var(--seal);
+    margin-left:2px;
+  }
+  .digit .d{
+    margin-top:6px;
+    font-size:12.5px;
+    color:var(--ink-3);
+    line-height:1.6;
+  }
+
+  /* ===== 快讯 ===== */
+  .briefs{
+    padding:4px 2px 0;
+  }
+  .brief{
+    display:flex;
+    gap:12px;
+    padding:11px 0;
+    border-bottom:1px dashed var(--line-strong);
+    font-size:14.5px;
+    line-height:1.8;
+    color:var(--ink-2);
+    text-align:justify;
+  }
+  .brief:last-child{border-bottom:none;}
+  .brief .dot{
+    flex:none;
+    margin-top:11px;
+    width:7px;height:7px;
+    background:var(--ink);
+  }
+  .brief b{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  /* ===== 明日关注 ===== */
+  .tomorrow{
+    margin-top:26px;
+    background:var(--ink);
+    color:var(--paper);
+    padding:20px 20px 18px;
+  }
+  .tomorrow .t{
+    font-family:var(--serif);
+    font-size:15px;
+    letter-spacing:.35em;
+    color:#e8dfc8;
+    border-bottom:1px solid rgba(246,241,230,.25);
+    padding-bottom:10px;
+    margin-bottom:12px;
+  }
+  .tomorrow ul{list-style:none;}
+  .tomorrow li{
+    font-size:14.5px;
+    line-height:1.9;
+    padding-left:20px;
+    position:relative;
+    color:#efe9d9;
+  }
+  .tomorrow li::before{
+    content:"";
+    position:absolute;
+    left:2px;top:13px;
+    width:8px;height:1.5px;
+    background:var(--seal);
+  }
+
+  /* ===== 报尾 ===== */
+  .colophon{
+    margin-top:28px;
+    text-align:center;
+  }
+  .colophon .r{
+    height:3px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+    margin-bottom:12px;
+  }
+  .colophon .name{
+    font-family:var(--serif);
+    font-size:14px;
+    letter-spacing:.3em;
+    color:var(--ink-2);
+  }
+  .colophon .note{
+    margin-top:6px;
+    font-size:11.5px;
+    color:var(--ink-3);
+    line-height:1.7;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 报头 -->
+  <header>
+    <div class="masthead">
+      <div class="nameplate"><span class="ai">AI</span>日报</div>
+      <div class="seal">报</div>
+    </div>
+    <div class="dateline">
+      <span>2026年9月7日　星期一</span>
+      <span class="en">AI Daily Briefing</span>
+    </div>
+    <div class="rule-double"></div>
+  </header>
+
+  <!-- 导语 -->
+  <p class="lead">
+    今日最值得记住的一件事：OpenAI 最强模型 <strong>GPT-6 Astra</strong> 正式向全部付费用户开放——它能直接操作电脑替你干活；但围绕它“成绩单”的争议，可能比模型本身更值得老板们留意。
+  </p>
+
+  <!-- 头条 -->
+  <div class="section-label"><span class="sq"></span><span class="t">头 条</span><span class="line"></span></div>
+
+  <article class="topstory">
+    <div class="num">01</div>
+    <h1>GPT-6 Astra 全量开放，奥特曼为“混乱发布”公开道歉</h1>
+    <p>经历两天的混乱后，OpenAI 宣布 GPT-6 Astra 已向所有 Pro、企业和商业高级版用户开放，CEO 奥特曼为“糟糕的发布过程”公开致歉。这款模型的定位不再只是“回答问题”，而是直接操作软件：做 PPT、建金融模型、给二手桌写商品页，说一句“做得高端一点”它就动手。</p>
+    <p>但麻烦跟着来了：多家媒体发现 OpenAI 在发布后多次修改基准测试数据，自家分数上调、对手分数下调；安全研究人员还指出 Astra 采用“循环深度”推理，思考过程变成黑箱，今后可能无法监督 AI“在想什么”。</p>
+    <div class="takeaway">
+      <span class="k">老板视角</span>
+      <div class="v">工具越强，越要盯紧它的“成绩单”。给企业选型时，别只看宣传分数，看它在你真实业务里的活儿。</div>
+    </div>
+  </article>
+
+  <!-- 要闻 -->
+  <div class="section-label"><span class="sq"></span><span class="t">要 闻</span><span class="line"></span></div>
+
+  <article class="item">
+    <div class="head"><span class="num">02</span><span class="cat">科研突破</span></div>
+    <h2>Claude 花 11 天“验算”费马大定理，写下 1300 万行代码</h2>
+    <p>Anthropic 宣布：Claude 基本自主工作 11 天，把三百多年前的费马大定理证明完整翻译成计算机可逐行验证的语言，生成约 1300 万行代码、近 3 万个中间定理。AI 没有重新证明定理，而是让证明从此能被机器自动检查——科研和工程里那些“慢功夫、细功夫”，AI 开始能扛了。</p>
+  </article>
+
+  <article class="item">
+    <div class="head"><span class="num">03</span><span class="cat">资本</span></div>
+    <h2>Anthropic 推迟上市，估值或冲 2 万亿美元</h2>
+    <p>据路透社消息，Anthropic 的 IPO 路演最早也要到 10 月中旬，估值可能高达 2 万亿美元，同时在洽谈最高 150 亿美元的信贷额度。资本市场对头部 AI 公司的押注仍在加码——是不是泡沫，最终要看收入落地。</p>
+  </article>
+
+  <article class="item">
+    <div class="head"><span class="num">04</span><span class="cat">监管 · 自动驾驶</span></div>
+    <h2>特斯拉 Cybercab 遭美国安全调查，股价单日跌近 6%</h2>
+    <p>无人驾驶出租车 Cybercab 亮相后，美国交通安全管理局（NHTSA）对其安全合规正式立案调查——这款车没有方向盘和踏板。发布会未公布定价和量产时间表，仅开放小范围试点，市场失望情绪下特斯拉股价下跌 5.92%。车要上路，监管这关比技术更难。</p>
+  </article>
+
+  <article class="item">
+    <div class="head"><span class="num">05</span><span class="cat">职场信号</span></div>
+    <h2>瑞银把“会用 AI”列为投行新人录用硬门槛</h2>
+    <p>瑞银（UBS）通知 2027 届校招候选人：AI 熟练度将与学历、金融能力并列为正式录用标准——要求能用 AI 做研究、建模、写初稿，还要“知道模型什么时候是错的”。这是全球大投行首次把 AI 能力写成入职门槛，而不是入职后再培训。</p>
+  </article>
+
+  <article class="item">
+    <div class="head"><span class="num">06</span><span class="cat">产品更替</span></div>
+    <h2>谷歌助手开始退役，Gemini 全面接管手机</h2>
+    <p>9 月 4 日起，谷歌开始在安卓手机、手表和车载系统上关闭 Google Assistant，由 Gemini 接管“Hey Google”语音唤醒。切换分批进行、不可逆转。“动口不动手”的 AI 操作方式，正在替换掉用了十年的旧语音助手。</p>
+  </article>
+
+  <!-- 数字速览 -->
+  <div class="section-label"><span class="sq"></span><span class="t">数字速览</span><span class="line"></span></div>
+  <div class="digits">
+    <div class="digit"><div class="n">1300<em>万行</em></div><div class="d">Claude 验证费马大定理生成的代码量</div></div>
+    <div class="digit"><div class="n">2<em>万亿美元</em></div><div class="d">Anthropic 潜在 IPO 估值</div></div>
+    <div class="digit"><div class="n">74<em>亿美元</em></div><div class="d">印度塔塔新建 1 吉瓦 AI 数据中心投资</div></div>
+    <div class="digit"><div class="n">2.65<em>亿美元</em></div><div class="d">AI 行业投入美国中期选举的政治资金</div></div>
+  </div>
+
+  <!-- 快讯 -->
+  <div class="section-label"><span class="sq"></span><span class="t">快 讯</span><span class="line"></span></div>
+  <div class="briefs">
+    <div class="brief"><span class="dot"></span><span><b>128 国日内瓦达成共识</b>，就自主武器（“杀手机器人”）规则形成初步文本，但无法律约束力，美俄仍倾向各自定规。</span></div>
+    <div class="brief"><span class="dot"></span><span><b>AI 短剧国内大爆发</b>：成片报价从每分钟 5000 元跌到几百元；数字人定制从几十万跌到几千元。产能过剩下，定制服务反而能卖到每分钟 1-2 万元。</span></div>
+    <div class="brief"><span class="dot"></span><span><b>美国出版商再诉 OpenAI</b>：西雅图时报、Newsday 起诉 OpenAI 与微软，指控其未经授权使用付费墙内新闻训练模型。</span></div>
+  </div>
+
+  <!-- 明日关注 -->
+  <div class="tomorrow">
+    <div class="t">明日关注</div>
+    <ul>
+      <li>OpenAI 会否正式回应基准数据修改质疑</li>
+      <li>特斯拉 NHTSA 调查后续进展</li>
+      <li>Anthropic 招股说明书预计月底亮相</li>
+    </ul>
+  </div>
+
+  <!-- 报尾 -->
+  <footer class="colophon">
+    <div class="r"></div>
+    <div class="name">AI 日报 · 每日更新</div>
+    <div class="note">内容整理自公开报道，仅供内部参考，不构成投资建议</div>
+  </footer>
+
+</div>
+</body>
+</html>
